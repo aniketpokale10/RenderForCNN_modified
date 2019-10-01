@@ -209,5 +209,9 @@ for param in view_params:
     theta_deg = (-1*theta_deg)%360
     syn_image_file = './%s_%s_a%03d_e%03d_t%03d_d%03d.png' % (shape_synset, shape_md5, round(azimuth_deg), round(elevation_deg), round(theta_deg), round(rho))
     bpy.data.scenes['Scene'].render.filepath = os.path.join(syn_images_folder, syn_image_file)
+    scn.render.resolution_x = 856
+    scn.render.resolution_y = 480
+    scn.render.resolution_percentage = 100
+
     bpy.ops.render.render( write_still=True )
 
