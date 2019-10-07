@@ -34,7 +34,17 @@ light_dist_lowbound = g_syn_light_dist_lowbound
 light_dist_highbound = g_syn_light_dist_highbound
 
 
-def camPosToQuaternion(cx, cy, cz):
+#Switch Engine to Cycles
+bpy.context.scene.render.engine = 'CYCLES'
+#tell blender to use CUDA / GPU devices
+bpy.context.user_preferences.addons['cycles'].preferences.compute_device_type = 'CUDA'
+#set CYCLES render system GPU or CPU
+#  GPU, CPU
+bpy.data.scenes["Scene"].cycles.device='GPU'
+
+
+
+def camPosToQuaternion(cx, cy, cz):        #This one is not used
     camDist = math.sqrt(cx * cx + cy * cy + cz * cz)
     cx = cx / camDist
     cy = cy / camDist
